@@ -1,0 +1,13 @@
+# AWS VPC
+resource "aws_vpc" "main" {
+   cidr_block ="10.0.0.0/16"
+}
+
+# Azure VNet
+resource "azurem_virtual_network" "main" {
+  name    ="pathnex-vnet"
+  location="East US"
+  address_space= ["10.0.0.0/16"]
+  resource_group_name = azurem_resource_group.main.name
+
+}
