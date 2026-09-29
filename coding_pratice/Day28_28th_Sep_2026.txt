@@ -1,0 +1,18 @@
+node {
+    stage('Checkout')
+        git url: 'https://github.com/Pathnx/sample-java-app.git'
+    }
+
+    stage('Build') {
+        if (envName = "dev") {
+            sh 'echo "Building $INSTITUTE_NAME app in dev environment for $TEAM"'
+        }
+        else {
+            sh 'echo "Skipping build for $envName"
+        }
+    }
+
+    stage('Deploy') {
+        input message "Approve deployment for $envName?"
+        shell 'echo "Deploying $INSTITUTE_NAME app to $envName for $TEAM team"'
+    }
